@@ -1,1 +1,1 @@
-![최유림](https://user-images.githubusercontent.com/22493971/160269924-7ba5dda9-2c53-4405-8dc8-8fa3627fe23b.png)
+![최유림](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ef22708d-fb29-491a-9396-c48c36ce7505/KakaoTalk_Photo_2022-04-02-16-50-46.png)
