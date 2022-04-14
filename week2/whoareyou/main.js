@@ -81,6 +81,10 @@ function attachEvent({score, answer, image, btn}){
       }
     }
   })
+  btn.addEventListener('click',(e) => {
+    e.stopPropagation();
+    initGame({score, answer, image});
+  })
 }
 
 function gameManager(gameInfo){
@@ -93,6 +97,7 @@ window.onload = () => {
     score: $('.scoreBoard__score'),
     answer: $('ul.answer__list'),
     image: $('.imageBoard > img'),
+    btn: $('.buttonList__shuffle'),
   })
 }
 
