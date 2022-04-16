@@ -58,6 +58,12 @@ section.scoreBoard {
   padding: 10px;
 }
 
+section.scoreBoard.animate{
+  position: relative; 
+  animation: scoreBoard 1.1s infinite;
+  background-color: #783cf1;
+}
+
 section.scoreBoard.scored {
   animation: score 0.5s ease-in-out infinite;
   color: rgb(255, 0, 0);
@@ -160,3 +166,18 @@ div.imageBoard > img {
   }
 }
 
+@keyframes scoreBoard{
+
+  0%{
+    top:0px;
+    left:0px;
+  }
+  50%{
+    top:10px;
+    left:0px;
+  }
+  100%{
+      top:0px;
+      left:0px;    
+  }
+}

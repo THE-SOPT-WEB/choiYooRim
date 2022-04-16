@@ -59,6 +59,7 @@ function hideModal(){
 function goNextStep(score, image){
   currentStep++;
   score.innerText = Number(score.innerText) + 1;
+  getScore()  
   
   if(currentStep === quizList.length){
     // 게임이 끝난 상태.
@@ -101,6 +102,15 @@ function gameManager(gameInfo){
   initGame(gameInfo);
   attachEvent(gameInfo);
 } 
+
+function getScore(){
+  const scoreBoard = $('.scoreBoard')
+  scoreBoard.classList.add('animate');
+
+  setTimeout(()=>{
+    scoreBoard.classList.remove('animate');
+  }, 500)
+}
 
 window.onload = () => {
   gameManager({
