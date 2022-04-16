@@ -47,8 +47,13 @@ function showModal(modalContent, keepOpen){
 
   if(keepOpen) return;
   setTimeout(()=>{
-    modal.classList.add('hide');
+    hideModal()
   }, 500)
+}
+
+function hideModal(){
+  const modal = $('.modal');
+  modal.classList.add('hide');
 }
 
 function goNextStep(score, image){
@@ -59,7 +64,8 @@ function goNextStep(score, image){
     // 게임이 끝난 상태.
     showModal(`
       <a href="/">메인화면으로</a>
-    `,true);
+    `);
+    window.location.reload();
     return;
   }
 
@@ -73,7 +79,7 @@ function attachEvent({score, answer, image, btn}){
       const realAnswer = quizList[currentStep].answer;
       if(currentAnswer === realAnswer){
         // 정답;
-        showModal('나를 알아주다니 고마워');
+        showModal(`로딩중`);
         goNextStep(score, image);
       } else{
         // 오답;
@@ -85,12 +91,16 @@ function attachEvent({score, answer, image, btn}){
     e.stopPropagation();
     initGame({score, answer, image});
   })
+
+  image.addEventListener('load',(e) => {
+    hideModal();
+  })
 }
 
 function gameManager(gameInfo){
   initGame(gameInfo);
   attachEvent(gameInfo);
-}
+} 
 
 window.onload = () => {
   gameManager({
