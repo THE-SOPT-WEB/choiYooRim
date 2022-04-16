@@ -46,11 +46,19 @@ function showModal(modalContent, keepOpen){
   modal.classList.remove('hide');
 
   if(keepOpen) return;
-  setTimeout(()=>{
-    hideModal()
-  }, 500)
+  // setTimeout(()=>{
+  //   hideModal()
+  // }, 1500)
+  
+  //모달 바깥 클릭시 모달창 닫힘
+  modal.addEventListener('click',(e) => {
+    if(e.target.classList.value !== "modal__body"){
+      hideModal();
+    }
+  })
 }
 
+//모달 숨기는 부분 분리
 function hideModal(){
   const modal = $('.modal');
   modal.classList.add('hide');
@@ -92,10 +100,12 @@ function attachEvent({score, answer, image, btn}){
     e.stopPropagation();
     initGame({score, answer, image});
   })
-
+  
+  //이미지 로딩 중 처리
   image.addEventListener('load',(e) => {
     hideModal();
   })
+
 }
 
 function gameManager(gameInfo){
@@ -111,6 +121,7 @@ function getScore(){
     scoreBoard.classList.remove('animate');
   }, 500)
 }
+
 
 window.onload = () => {
   gameManager({
