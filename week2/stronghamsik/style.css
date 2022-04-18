@@ -110,6 +110,8 @@ div.cart__burger{
   flex-direction: column;
   position: sticky;
   top:20px;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 div.cart__burger > *{
@@ -140,3 +142,9 @@ button.order__button{
   height:20px;
   border-radius: 10px;
 } 
+
+.added__burger{
+  display: flex;
+}
+
+
