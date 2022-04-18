@@ -19,9 +19,10 @@ function clickBurgerCard(){
       if(burger.name === burgerInfo.name.innerText){ //이미 안에 버거가 있는 종류라면 
         console.log(burger);
         burger.amount++;
-        const oldBurger = document.querySelectorAll('.added__burger shou');
-        console.log(oldBurger);
-        console.log(oldBurger.querySelector('input').innerHTML) ;
+        const burgerName = "." + burgerInfo.name.innerText;
+        const oldBurger = document.querySelector(burgerName);
+        oldBurger.querySelector('input').value = burger.amount;
+        return;
       }
     }
 
@@ -34,15 +35,17 @@ function clickBurgerCard(){
 
     //장바구니에 직접 추가를 해주는 부분 -> 뷰를 그리기 위함
     shoppingList.innerHTML += `
-      <div class="added__burger shou">
-        <p class="burger__name"> ${newBurger.name} </p>
-        <input type="number" class="account__select" min="1" value="${newBurger.amount}">
-        <p class="burger__price"> ${newBurger.price} </p>
-        <button>x</button>
+      <div class="added__burger">
+        <div id="burger__element" class="${newBurger.name}">
+          <p class="burger__name"> ${newBurger.name} </p>
+          <input class="burger_amount" type="number" min="1" value="1">
+          <p class="burger__price"> ${newBurger.price} </p>
+          <button class="delete__burger">x</button>
+        </div>
       </div>
     `;
 
-    
+
   })
 } 
 

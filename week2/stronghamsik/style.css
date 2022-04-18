@@ -143,8 +143,36 @@ button.order__button{
   border-radius: 10px;
 } 
 
-.added__burger{
+.shopping__list{
   display: flex;
+  flex-direction: column;
+  gap:5px;
+}
+
+#burger__element{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#burger__element > .burger__name{
+  flex : 0.4
+}
+
+#burger__element > .burger_amount{
+  flex : 0.1
+}
+
+#burger__element > .burger__price{
+  flex : 0.2
+}
+
+#burger__element > .delete__burger{
+  flex : 0.05
+}
+
+input{
+  width:30px;
 }
 
 
