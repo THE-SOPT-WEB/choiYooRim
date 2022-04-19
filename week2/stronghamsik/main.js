@@ -98,9 +98,23 @@ function calcPrice(){
   accumulatedPrice.innerText = accumulatedAmount;
 }
 
+function clearCart(){
+  const cancelButton = $('.cancel__button');
+  cancelButton.addEventListener('click',(e)=>{
+    console.log('취소하기 버튼 클릭됨');
+    const shoppingList = $('.shopping__list');
+    burgerList = [];
+    console.log(burgerList);
+    shoppingList.innerHTML = `
+    `;
+    accumulatedAmount = 0;
+    calcPrice();
+  })
+  
+}
 window.onload = () =>{
   clickBurgerCard();
   clickOrderButton();
   clickNoButton();
-  calcPrice();
+  clearCart();
 }

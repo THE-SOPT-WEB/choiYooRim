@@ -143,6 +143,12 @@ button.order__button{
   border-radius: 10px;
 } 
 
+button.cancel__button{
+  background-color: #CD755C;
+  height:20px;
+  border-radius: 10px;
+} 
+
 .shopping__list{
   display: flex;
   flex-direction: column;
