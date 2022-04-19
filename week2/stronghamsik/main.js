@@ -49,51 +49,42 @@ function clickBurgerCard(){
   })
 } 
 
-// function printBurgerList(){
-//   const shoppingList = $('.shopping__list');
-//   burgerList.addEventListener('change',(e)=>{
-//     for(let burger of burgerList){
-//       console.log(burger);
-//       shoppingList.innerHTML += `
-//         <div class="added__burger">
-//           <h3 class="burger__name"> ${burger.name}
-//           <input type="number" class="account__select" min="1" value="${burger.amount}">
-//           <h3 class="burger__price"> ${burger.price}
-//           <button>x</button>
-//         </div>
-//         `;
-//     }
-//   })
-// }
+function showModal(modalContent){
+  const modal = $('.modal');
+  const modalBody = $('p.modal__body');
+  modalBody.innerHTML = modalContent;
+  modal.classList.remove('hide');
 
-// function addBurger(burgerInfo, newThing){
-//     const shoppingCart = $('.cart__burger');
-//     const shoppingList = $('.shopping__list');
+}
+
+function clickNoButton(){
+  const noButton = $('.no');
+  noButton.addEventListener('click',(e)=>{
+    console.log('no버튼 선택됨');
+    hideModal();
+  })
+}
+
+function hideModal(){
+  const modal = $('.modal');
+  modal.addEventListener('click',(e) => {
+    if(e.target.classList.value !== "modal__body"){
+      modal.classList.add('hide');
+    }
+  })
+}
+function clickOrderButton(){
+  const orderButton = $('.order__button');
+  
+  orderButton.addEventListener('click',(e)=>{
+    console.log("버튼 클릭됨");
+    showModal('정말 주문하시겠어요?');
     
-//     if(newThing){
-//       const burger = {
-//         name: burgerInfo.name.innerText,
-//         price: burgerInfo.price.innerText,
-//         amount : burgerInfo.amount,
-//       }
-//       burgerList.push({...burger});
-//       console.log(burger);
-//       shoppingList.innerHTML += `
-//       <div class="added__burger">
-//         <h3 class="burger__name"> ${burger.name}
-//         <input type="number" class="account__select" min="1" value="${burger.amount}">
-//         <h3 class="burger__price"> ${burger.price}
-//         <button>x</button>
-//       </div>
-//       `;
-//     }
-//     else{
-//       const amount = $('.account__select');
-//       amount.value = burgerInfo.amount;
-//     }
-
-// }
+  })
+}
 
 window.onload = () =>{
   clickBurgerCard();
+  clickOrderButton();
+  clickNoButton();
 }
