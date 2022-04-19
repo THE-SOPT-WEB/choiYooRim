@@ -1,6 +1,7 @@
 const $ = (selector) => document.querySelector(selector);
 
 let burgerList = [];
+let accumulatedAmount = 0;
 
 function clickBurgerCard(){
   const cardList = $('.mac__burger');
@@ -22,6 +23,8 @@ function clickBurgerCard(){
         const burgerName = "." + burgerInfo.name.innerText;
         const oldBurger = document.querySelector(burgerName);
         oldBurger.querySelector('input').value = burger.amount;
+        console.log(burgerList);
+        calcPrice();
         return;
       }
     }
@@ -32,7 +35,8 @@ function clickBurgerCard(){
       amount : 1,
     }
     burgerList.push(newBurger);
-
+    calcPrice();
+    console.log(burgerList);
     //장바구니에 직접 추가를 해주는 부분 -> 뷰를 그리기 위함
     shoppingList.innerHTML += `
       <div class="added__burger">
@@ -44,8 +48,6 @@ function clickBurgerCard(){
         </div>
       </div>
     `;
-
-
   })
 } 
 
@@ -54,7 +56,6 @@ function showModal(modalContent){
   const modalBody = $('p.modal__body');
   modalBody.innerHTML = modalContent;
   modal.classList.remove('hide');
-
 }
 
 function clickNoButton(){
@@ -73,18 +74,33 @@ function hideModal(){
     }
   })
 }
+
 function clickOrderButton(){
   const orderButton = $('.order__button');
   
   orderButton.addEventListener('click',(e)=>{
     console.log("버튼 클릭됨");
     showModal('정말 주문하시겠어요?');
-    
   })
+}
+const parsePriceToNumber = (price) => {
+	const removedComma = price.replace(/\D/g, "");
+  console.log(removedComma);
+  return +removedComma;
+};
+
+function calcPrice(){
+  const accumulatedPrice = $(".accumulated__price");
+  accumulatedAmount = 0;
+  for(let burger of burgerList){
+    accumulatedAmount += parsePriceToNumber(burger.price) * burger.amount;
+  }
+  accumulatedPrice.innerText = accumulatedAmount;
 }
 
 window.onload = () =>{
   clickBurgerCard();
   clickOrderButton();
   clickNoButton();
+  calcPrice();
 }

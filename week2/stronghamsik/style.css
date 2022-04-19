@@ -175,7 +175,9 @@ input{
   width:30px;
 }
 
-
+.accumulated__price:after{
+  content: '원'
+}
 
 .modal.hide {
   display: none;
