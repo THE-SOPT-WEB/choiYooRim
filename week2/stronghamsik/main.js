@@ -48,6 +48,8 @@ function clickBurgerCard(){
         </div>
       </div>
     `;
+
+    deleteBurger();
   })
 } 
 
@@ -83,6 +85,7 @@ function clickOrderButton(){
     showModal('정말 주문하시겠어요?');
   })
 }
+
 const parsePriceToNumber = (price) => {
 	const removedComma = price.replace(/\D/g, "");
   console.log(removedComma);
@@ -110,11 +113,24 @@ function clearCart(){
     accumulatedAmount = 0;
     calcPrice();
   })
-  
 }
+
+function deleteBurger(){
+  const xButton = $('.delete__burger');
+  xButton.addEventListener('click',(e)=>{
+    const xBurger = e.target.closest('.added__burger');
+
+    burgerList = burgerList.filter((element) => element.name !== xBurger.querySelector('.burger__name').innerText);
+    console.log(burgerList);
+    calcPrice();
+    xBurger.innerHTML = ``;
+  })
+}
+
 window.onload = () =>{
   clickBurgerCard();
   clickOrderButton();
   clickNoButton();
   clearCart();
 }
+
