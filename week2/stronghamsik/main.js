@@ -42,7 +42,7 @@ function clickBurgerCard(){
       <div class="added__burger">
         <div id="burger__element" class="${newBurger.name}">
           <p class="burger__name"> ${newBurger.name} </p>
-          <input class="burger_amount" type="number" min="1" value="1">
+          <input class="burger__amount" type="number" min="1" value="${newBurger.amount}">
           <p class="burger__price"> ${newBurger.price} </p>
           <button class="delete__burger">x</button>
         </div>
@@ -50,6 +50,7 @@ function clickBurgerCard(){
     `;
 
     deleteBurger();
+    controlAmount();
   })
 } 
 
@@ -116,15 +117,44 @@ function clearCart(){
 }
 
 function deleteBurger(){
-  const xButton = $('.delete__burger');
-  xButton.addEventListener('click',(e)=>{
-    const xBurger = e.target.closest('.added__burger');
+  const xButton = document.querySelectorAll('.delete__burger');
+  for(let i = 0; i<xButton.length; i++){
+    xButton[i].addEventListener('click',(e)=>{
+      const xBurger = e.target.closest('.added__burger');
+      console.log(xBurger.innerHTML);
+      burgerList = burgerList.filter((element) => element.name !== xBurger.querySelector('.burger__name').innerText);
+      console.log(burgerList);
+      calcPrice();
+      xBurger.innerHTML = ``;
+    })
+  }
+}
 
-    burgerList = burgerList.filter((element) => element.name !== xBurger.querySelector('.burger__name').innerText);
-    console.log(burgerList);
-    calcPrice();
-    xBurger.innerHTML = ``;
-  })
+function controlAmount(){
+  const countButton = document.querySelectorAll('.burger__amount');
+  for(let i = 0; i<countButton.length; i++){
+    countButton[i].addEventListener('click',(e)=>{
+      const countBurger = e.target.closest('.added__burger');
+      const count = e.target.closest('.burger__amount');
+      const countBurgerName = countBurger.querySelector('.burger__name').innerText;
+      console.log(countBurger.innerHTML);
+      console.log(count.value);
+      console.log(countBurgerName);
+      for(let burger of burgerList){
+        if(burger.name === countBurgerName){ //이미 안에 버거가 있는 종류라면 
+          console.log(burger);
+          burger.amount = Number(count.value);
+          console.log(burger);
+        }
+      }
+      calcPrice();
+      // burgerList = burgerList.filter((element) => element.name !== xBurger.querySelector('.burger__name').innerText);
+      // console.log(burgerList);
+      // calcPrice();
+      // xBurger.innerHTML = ``;
+    })
+  }
+
 }
 
 window.onload = () =>{
@@ -132,5 +162,8 @@ window.onload = () =>{
   clickOrderButton();
   clickNoButton();
   clearCart();
+  if(burgerList.length !== 0){
+    controlAmount();
+  }
 }
 
