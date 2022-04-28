@@ -1,0 +1,243 @@
+
+*{  
+  box-sizing : border-box;
+  margin : 0;
+  border: 0;
+}
+
+header{
+  background-color: #CD755C;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  align-items: center;
+  height: 60px;
+}
+
+main{
+  display: flex;
+}
+
+aside.sideBar{
+  flex:1;
+  margin-left: 15px;
+}
+
+section.mac__burger{
+  flex:3;
+}
+
+aside.cart{
+  flex:1.5;
+}
+
+div.select__brand{
+  width:150px;
+  height: 15%;
+  border-radius: 8px;
+  background-color: #FFCDBF;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.select__brand > h1{
+  margin: 5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+div.burger__brand{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+}
+
+div.burger__brand > *{
+  border-radius: 3px;
+  width: 120px;
+}
+
+button.mac{
+  background-color: #CD755C;
+  border-radius: 3px;
+  text-align: center;
+}
+
+button.burgerking{
+  background-color: #FFE6DF;
+  border-radius: 3px;
+  text-align: center;
+}
+
+section.mac__burger{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 15px;
+}
+
+article.burger__card {
+  display: flex;
+  background-color: white;
+  border : 1px solid black;
+  border-radius: 8px;
+  width:45%;
+  height: 20%;
+  box-shadow: 3px 2px 4px rgb(71, 69, 69);
+}
+
+article.burger__card:hover{
+  background-color: #FFCDBF;
+}
+article.burger__card > img{
+  width:150px;
+}
+
+article.burger__card > div.burger__content{
+  margin-top:35px;
+  display: flex;
+  flex-direction: column;
+}
+
+div.cart__burger{
+  width:80%;
+  height: 30%;
+  border-radius: 8px;
+  background-color: #FFCDBF;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  position: sticky;
+  top:20px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+div.cart__burger > *{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+div.cart__burger > h1{
+  margin-top: 20px;
+}
+
+
+hr{
+  background-color: white;
+  height: 3px;
+  margin-top: 30px;
+}
+
+div.buttons{
+  display: flex;
+  justify-content: center;
+  gap:10px;
+  margin-top: 10px;
+}
+
+button.order__button{
+  background-color: #CD755C;
+  height:20px;
+  border-radius: 10px;
+} 
+
+button.cancel__button{
+  background-color: #CD755C;
+  height:20px;
+  border-radius: 10px;
+} 
+
+.shopping__list{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+}
+
+#burger__element{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#burger__element > .burger__name{
+  flex : 0.4
+}
+
+#burger__element > .burger_amount{
+  flex : 0.1
+}
+
+#burger__element > .burger__price{
+  flex : 0.2
+}
+
+#burger__element > .delete__burger{
+  flex : 0.05
+}
+
+input{
+  width:30px;
+}
+
+.accumulated__price:after{
+  content: '원'
+}
+
+.modal.hide {
+  display: none;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__content {
+  width: fit-content;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  border-radius: 18px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.buttons__yesorno{
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+}
+a{
+  text-decoration-line: none;
+}
+a.yes{
+    display:block;
+    width:80px;
+    line-height:30px;
+    text-align:center;
+    background-color:#222;
+    color:#fff;
+}
+
+a.no{
+  display:block;
+  width:80px;
+  line-height:30px;
+  text-align:center;
+  background-color:#222;
+  color:#fff;
+}
