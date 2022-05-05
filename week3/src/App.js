@@ -85,12 +85,10 @@ function App() {
     winner = newWinner;
     let newCoffeeShop = coffeeShop.slice(2);
     if(newCoffeeShop.length === 0){
-      console.log("여기?")
       setCoffeeShop(winner);
       winner=[];
     }
     else{
-      console.log("아니면 여기?")
       setCoffeeShop(newCoffeeShop);
       console.log(winner);
       display = [newCoffeeShop[0],newCoffeeShop[1]];
@@ -98,7 +96,6 @@ function App() {
   }
 
   if(coffeeShop.length===1){
-    console.log("여기로 안와?")
     return(
       <div className="App">
       <main>
@@ -114,7 +111,6 @@ function App() {
     )
   }
   else{
-    console.log("처음에 여기로 빠짐");
       return (
       <div className="App">
         <main>
