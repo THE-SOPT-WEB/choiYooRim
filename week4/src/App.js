@@ -6,6 +6,7 @@ import Button from './components/Button';
 import Li from './components/Li';
 import Info from './components/Info';
 import MobileWeb from './components/MobileWeb';
+import Skeleton from './Skeleton';
 
 const getLocation = (errHandler) => {
   if ("geolocation" in navigator) {
@@ -31,6 +32,12 @@ function App() {
   const [beerList, setBeerList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
+
+  // useEffect(()=>{
+  //   if(isLoading){
+  //     return <Skeleton></Skeleton>
+  //   }
+  // },[isLoading])
 
   async function getMyLocation(){
     const result = await getLocation();
@@ -119,7 +126,7 @@ function App() {
   const showBeerList = () =>{
     if(isLoading){
       return(
-        <h3 className="loading">Loading . . .</h3>
+        <Skeleton></Skeleton>
       )
     }
     if(beerList.length===0){
@@ -145,6 +152,8 @@ function App() {
   const checkHandler = ({checked}) =>{
     setChecked(!checked);
   }
+
+  
 
   return (
     <>
