@@ -1,12 +1,13 @@
 import './App.css';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import starbucks from './images/starbucks.webp';
 import coffeebean from './images/coffeebean.jpeg';
 import twosomeplace from './images/twosomeplace.jpeg';
 import hollyscoffee from './images/hollyscoffee.jpeg';
 import styled from 'styled-components';
+import Module from 'module';
 
-const items = [
+const items:coffeeShop[] = [
   {
     name : "starbucks",
     pic : starbucks,
@@ -66,10 +67,15 @@ function shuffleArray(){
   console.log(items);
 }
 
-let winner = [];
+let winner:coffeeShop[] = [];
+
+interface coffeeShop {
+  name: string,
+  pic: string,
+}
 function App() {
   const [coffeeShop, setCoffeeShop] = useState(items);
-  let display = [];
+  let display:coffeeShop[] = [];
 
   useEffect(()=>{
   },[coffeeShop])
@@ -78,12 +84,11 @@ function App() {
   console.log(coffeeShop);
   display = [coffeeShop[0],coffeeShop[1]];
   
-  const clickEvent = (coffeeShops) =>{
+  const clickEvent = (coffeeShops:coffeeShop) =>{
     console.log(coffeeShops);
-    console.log(winner);
-    let newWinner = [...winner, coffeeShops];
+    let newWinner:coffeeShop[] = [...winner, coffeeShops]; //스프레드연산자는 
     winner = newWinner;
-    let newCoffeeShop = coffeeShop.slice(2);
+    let newCoffeeShop:coffeeShop[] = coffeeShop.slice(2);
     if(newCoffeeShop.length === 0){
       setCoffeeShop(winner);
       winner=[];
